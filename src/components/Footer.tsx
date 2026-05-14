@@ -26,7 +26,12 @@ const Footer = () => (
 
       <div className="flex flex-wrap items-center justify-center gap-4">
 
-        <div className="flex items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-muted)] px-5 py-3 shadow-[var(--shadow-soft)]">
+        <a
+          href="https://chatgpt.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-muted)] px-5 py-3 shadow-[var(--shadow-soft)] transition hover:border-[var(--accent-border)] hover:bg-[var(--surface)]"
+        >
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#0d0d0d]">
             <OpenAIIcon />
           </span>
@@ -34,9 +39,14 @@ const Footer = () => (
             <p className="text-[11px] leading-none text-[var(--muted)]">OpenAI</p>
             <p className="mt-1 text-sm font-bold text-[var(--foreground)]">Codex</p>
           </div>
-        </div>
+        </a>
 
-        <div className="flex items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-muted)] px-5 py-3 shadow-[var(--shadow-soft)]">
+        <a
+          href="https://chatlyai.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-muted)] px-5 py-3 shadow-[var(--shadow-soft)] transition hover:border-[var(--accent-border)] hover:bg-[var(--surface)]"
+        >
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#c96442]">
             <AnthropicIcon />
           </span>
@@ -44,7 +54,7 @@ const Footer = () => (
             <p className="text-[11px] leading-none text-[var(--muted)]">Anthropic</p>
             <p className="mt-1 text-sm font-bold text-[var(--foreground)]">Claude Code</p>
           </div>
-        </div>
+        </a>
 
       </div>
 
