@@ -1,13 +1,13 @@
 const Hero = () => {
     return (
-        <section className="px-5 py-24 sm:px-6 lg:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <section className="px-5 py-16 sm:px-6 sm:py-24 lg:py-32">
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12">
             <div>
             <p className="mb-4 inline-flex rounded-md border border-[var(--accent-border)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-bold text-[var(--accent)] shadow-sm">
             Frontend & Backend Developer
             </p>
 
-            <h1 className="max-w-3xl text-4xl font-black leading-[1.08] text-[var(--foreground)] sm:text-6xl">
+            <h1 className="max-w-3xl text-3xl font-black leading-[1.1] text-[var(--foreground)] sm:text-5xl lg:text-6xl">
             React와 Java 기반의
             <br />
             사용자 중심 웹 서비스를 개발합니다
