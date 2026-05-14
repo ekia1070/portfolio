@@ -1,9 +1,9 @@
 const Hero = () => {
     return (
-        <section className="px-5 py-24 sm:px-6 lg:py-28">
+        <section className="px-5 py-24 sm:px-6 lg:py-32">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-            <p className="mb-4 inline-flex rounded-md border border-[var(--line)] bg-white/70 px-3 py-1 text-sm font-bold text-[var(--accent)] shadow-sm">
+            <p className="mb-4 inline-flex rounded-md border border-[var(--accent-border)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-bold text-[var(--accent)] shadow-sm">
             Frontend & Backend Developer
             </p>
 
@@ -23,28 +23,28 @@ const Hero = () => {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
                 href="#projects"
-                className="rounded-md bg-[var(--accent)] px-6 py-3 text-center text-sm font-bold text-white shadow-lg shadow-teal-900/10 transition hover:bg-[var(--accent-strong)]"
+                className="rounded-md bg-[var(--accent-strong)] px-6 py-3 text-center text-sm font-bold text-white shadow-lg shadow-[var(--accent-strong)]/20 transition hover:bg-[var(--accent)]"
             >
                 프로젝트 보기
             </a>
 
             <a
                 href="#contact"
-                className="rounded-md border border-[var(--line)] bg-white/80 px-6 py-3 text-center text-sm font-bold text-[var(--foreground)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                className="rounded-md border border-[var(--line)] bg-[var(--surface)] px-6 py-3 text-center text-sm font-bold text-[var(--foreground)] transition hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
             >
                 연락하기
             </a>
             </div>
             </div>
 
-            <div className="rounded-lg border border-[var(--line)] bg-[var(--foreground)] p-5 text-sm text-white shadow-[var(--shadow-soft)]">
+            <div className="rounded-lg border border-[var(--accent-border)] bg-[var(--surface-muted)] p-5 text-sm shadow-[var(--shadow-soft)]">
             <div className="mb-5 flex items-center gap-2">
                 <span className="h-3 w-3 rounded-full bg-[#ef4444]" />
                 <span className="h-3 w-3 rounded-full bg-[#f59e0b]" />
-                <span className="h-3 w-3 rounded-full bg-[#10b981]" />
-                <span className="ml-3 font-mono text-xs text-white/50">portfolio.ts</span>
+                <span className="h-3 w-3 rounded-full bg-[#22c55e]" />
+                <span className="ml-3 font-mono text-xs text-[var(--muted)]">portfolio.ts</span>
             </div>
-            <pre className="overflow-x-auto font-mono leading-7 text-white/90">
+            <pre className="overflow-x-auto font-mono leading-7 text-[var(--foreground)]/85">
 {`const developer = {
   stack: ["React", "Next.js", "Java"],
   focus: "usable UI and reliable systems",

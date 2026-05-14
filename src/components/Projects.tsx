@@ -84,22 +84,22 @@ const ProjectDetailModal = ({
   return (
     <div
       role="presentation"
-      className="fixed inset-0 z-[80] flex items-end justify-center bg-black/45 px-4 py-6 backdrop-blur-sm sm:items-center"
+      className="fixed inset-0 z-[80] flex items-end justify-center bg-black/60 px-4 py-6 backdrop-blur-sm sm:items-center"
       onClick={onClose}
     >
       <section
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-detail-title"
-        className="max-h-[86vh] w-full max-w-3xl overflow-y-auto rounded-lg border border-[var(--line)] bg-white shadow-[var(--shadow-soft)]"
+        className="max-h-[86vh] w-full max-w-3xl overflow-y-auto rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)]"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[var(--foreground)] p-6 text-white">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[var(--accent-border)] bg-[var(--surface-muted)] p-6">
           <div>
-            <p className="text-sm font-bold text-teal-200">Project Detail</p>
+            <p className="text-sm font-bold text-[var(--accent)]">Project Detail</p>
             <h3
               id="project-detail-title"
-              className="mt-2 text-2xl font-black leading-snug"
+              className="mt-2 text-2xl font-black leading-snug text-[var(--foreground)]"
             >
               {detail?.title ?? projectTitle}
             </h3>
@@ -109,7 +109,7 @@ const ProjectDetailModal = ({
             type="button"
             aria-label="Close project detail"
             onClick={onClose}
-            className="shrink-0 cursor-pointer rounded-md border border-white/15 px-3 py-1.5 text-sm font-bold text-white/80 transition hover:bg-white/10 hover:text-white"
+            className="shrink-0 cursor-pointer rounded-md border border-[var(--line)] px-3 py-1.5 text-sm font-bold text-[var(--muted)] transition hover:border-[var(--accent-border)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
           >
             닫기
           </button>
@@ -128,7 +128,7 @@ const ProjectDetailModal = ({
                 {detail.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-md bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent-strong)]"
+                    className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent)]"
                   >
                     {tech}
                   </span>
@@ -137,7 +137,7 @@ const ProjectDetailModal = ({
             </DetailSection>
 
             <DetailSection title="개발환경">
-              <span className="inline-flex rounded-md border border-[var(--line)] bg-white/70 px-3 py-1 text-sm font-bold text-[var(--muted)]">
+              <span className="inline-flex rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-bold text-[var(--muted)]">
                 {detail.environment}
               </span>
             </DetailSection>
@@ -169,7 +169,7 @@ const ProjectDetailModal = ({
 };
 
 const DetailMeta = ({ label, value }: { label: string; value: string }) => (
-  <div className="rounded-lg border border-[var(--line)] bg-white/80 p-4">
+  <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-muted)] p-4">
     <p className="text-xs font-black text-[var(--accent-warm)]">{label}</p>
     <p className="mt-2 font-bold leading-6 text-[var(--foreground)]">{value}</p>
   </div>
@@ -202,8 +202,8 @@ const DetailList = ({ items }: { items: string[] }) => (
 );
 
 const ProblemBlock = ({ title, items }: { title: string; items: string[] }) => (
-  <div className="rounded-lg border border-[var(--line)] bg-white/80 p-4">
-    <p className="mb-2 text-sm font-black text-[var(--accent-strong)]">
+  <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-muted)] p-4">
+    <p className="mb-2 text-sm font-black text-[var(--accent)]">
       {title}
     </p>
     <DetailList items={items} />
@@ -230,8 +230,8 @@ const ProjectCard = ({
 
   return (
     <article
-      className={`rounded-lg border bg-white/80 p-6 shadow-[var(--shadow-soft)] transition duration-200 hover:-translate-y-1 hover:border-[var(--accent)] ${
-        hasDetail ? "border-[var(--accent)]" : "border-[var(--line)]"
+      className={`rounded-lg border bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)] transition duration-200 hover:-translate-y-1 hover:border-[var(--accent-border)] ${
+        hasDetail ? "border-[var(--accent-border)]" : "border-[var(--line)]"
       }`}
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -249,13 +249,13 @@ const ProjectCard = ({
 
         <div className="flex shrink-0 flex-wrap gap-2 sm:justify-end">
           {hasDetail && (
-            <span className="w-fit whitespace-nowrap rounded-md bg-[var(--accent)] px-3 py-1 text-xs font-bold text-white">
+            <span className="w-fit whitespace-nowrap rounded-md bg-[var(--accent-strong)] px-3 py-1 text-xs font-bold text-white">
               Detail
             </span>
           )}
 
           {type && (
-            <span className="w-fit whitespace-nowrap rounded-md bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--accent-strong)]">
+            <span className="w-fit whitespace-nowrap rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--muted)]">
               {type}
             </span>
           )}
@@ -283,7 +283,7 @@ const ProjectCard = ({
             type="button"
             aria-expanded={isExpanded}
             onClick={() => setIsExpanded((current) => !current)}
-            className="rounded-md border border-[var(--line)] bg-white/70 px-3 py-1.5 text-xs font-bold text-[var(--accent-strong)] transition hover:border-[var(--accent)] hover:bg-[var(--surface-muted)]"
+            className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-bold text-[var(--accent)] transition hover:border-[var(--accent-border)]"
           >
             {isExpanded
               ? "접기"
@@ -301,7 +301,7 @@ const ProjectCard = ({
             {techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent-strong)]"
+                className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent)]"
               >
                 {tech}
               </span>
@@ -315,7 +315,7 @@ const ProjectCard = ({
           {environment.map((item) => (
             <span
               key={item}
-              className="rounded-md border border-[var(--line)] bg-white/70 px-3 py-1 text-xs font-bold text-[var(--muted)]"
+              className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--muted)]"
             >
               {item}
             </span>
@@ -327,7 +327,7 @@ const ProjectCard = ({
         <button
           type="button"
           onClick={() => onOpenDetail(project)}
-          className="mt-5 w-full cursor-pointer rounded-md border border-[var(--accent)] bg-white/70 px-4 py-2 text-sm font-bold text-[var(--accent-strong)] transition hover:bg-[var(--surface-muted)]"
+          className="mt-5 w-full cursor-pointer rounded-md border border-[var(--accent-border)] bg-[var(--surface-muted)] px-4 py-2 text-sm font-bold text-[var(--accent)] transition hover:bg-[var(--accent-strong)] hover:text-white"
         >
           상세 보기
         </button>
@@ -336,12 +336,19 @@ const ProjectCard = ({
   );
 };
 
+const parseStartDate = (period: string) => {
+  const match = period.match(/^(\d{4})\.(\d{2})/);
+  if (!match) return 0;
+  return parseInt(match[1]) * 100 + parseInt(match[2]);
+};
+
 const Projects = () => {
   const [selectedFilter, setSelectedFilter] = useState<ProjectFilter>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const filteredProjects = projects.filter((project) =>
-    isProjectVisible(project, selectedFilter)
-  );
+  const filteredProjects = projects
+    .slice()
+    .sort((a, b) => parseStartDate(b.period) - parseStartDate(a.period))
+    .filter((project) => isProjectVisible(project, selectedFilter));
   const selectedDetailSeq = selectedProject
     ? getProjectDetailSeq(selectedProject)
     : undefined;
@@ -355,23 +362,26 @@ const Projects = () => {
       className="mx-auto max-w-6xl px-5 py-20 sm:px-6"
     >
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-3xl font-black text-[var(--foreground)]">Projects</h2>
+        <h2 className="flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
+          <span className="h-px w-8 bg-[var(--accent)]" />
+          Projects
+        </h2>
 
         <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-md border border-[var(--line)] bg-white/70 px-3 py-2 text-sm font-bold text-[var(--muted)] shadow-sm">
+          <span className="rounded-md border border-[var(--line)] bg-[var(--surface)] px-3 py-2 text-sm font-bold text-[var(--muted)] shadow-sm">
             {filteredProjects.length} Projects
           </span>
 
           <fieldset
             aria-label="Project type filter"
-            className="flex w-fit rounded-lg border border-[var(--line)] bg-white/70 p-1 shadow-sm"
+            className="flex w-fit rounded-lg border border-[var(--line)] bg-[var(--surface)] p-1 shadow-sm"
           >
             {projectFilters.map((filter) => (
               <label
                 key={filter}
                 className={`cursor-pointer rounded-md px-4 py-2 text-sm font-bold transition ${
                   selectedFilter === filter
-                    ? "bg-[var(--accent)] text-white shadow-sm"
+                    ? "bg-[var(--accent-strong)] text-white shadow-sm"
                     : "text-[var(--muted)] hover:text-[var(--accent)]"
                 }`}
               >

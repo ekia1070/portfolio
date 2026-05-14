@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f9f6;
-  --foreground: #17201b;
-  --surface: #ffffff;
-  --surface-muted: #eef5f1;
-  --line: #dce7e1;
-  --accent: #0f766e;
-  --accent-strong: #115e59;
-  --accent-warm: #b45309;
-  --muted: #66756e;
-  --shadow-soft: 0 18px 50px rgb(23 32 27 / 8%);
+  --background: #0c0e18;
+  --foreground: #f2f2fa;
+  --surface: #13151f;
+  --surface-muted: #1a1c28;
+  --line: #2e3050;
+  --accent: #a5b4fc;
+  --accent-strong: #6366f1;
+  --accent-warm: #fbbf24;
+  --muted: #9898bc;
+  --accent-border: rgb(99 102 241 / 35%);
+  --shadow-soft: 0 20px 60px rgb(0 0 0 / 45%);
 }
 
 @theme inline {
@@ -30,17 +31,18 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    linear-gradient(135deg, rgb(247 249 246 / 96%) 0%, rgb(237 245 242 / 92%) 48%, rgb(250 247 240 / 94%) 100%),
-    var(--background);
+  background: var(--background);
+  background-image:
+    radial-gradient(ellipse 100% 55% at 50% -5%, rgb(99 102 241 / 14%) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 35% at 85% 90%, rgb(129 140 248 / 6%) 0%, transparent 50%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgb(15 118 110 / 18%);
-  color: var(--accent-strong);
+  background: rgb(129 140 248 / 28%);
+  color: var(--accent);
 }
 
 a {
@@ -48,6 +50,6 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid rgb(15 118 110 / 32%);
+  outline: 3px solid rgb(99 102 241 / 45%);
   outline-offset: 3px;
 }

@@ -6,7 +6,8 @@ const Skills = () => {
       id="skills"
       className="mx-auto max-w-6xl px-5 py-20 sm:px-6"
     >
-      <h2 className="mb-10 text-3xl font-black text-[var(--foreground)]">
+      <h2 className="mb-10 flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
+        <span className="h-px w-8 bg-[var(--accent)]" />
         Skills
       </h2>
 
@@ -33,7 +34,7 @@ const SkillCard = ({
   items: string[];
 }) => {
   return (
-    <div className="rounded-lg border border-[var(--line)] bg-white/80 p-6 shadow-[var(--shadow-soft)]">
+    <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)]">
       <h3 className="mb-4 text-xl font-black text-[var(--foreground)]">
         {title}
       </h3>
@@ -42,7 +43,7 @@ const SkillCard = ({
         {items.map((item) => (
           <span
             key={item}
-            className="rounded-md bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent-strong)]"
+            className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent)]"
           >
             {item}
           </span>

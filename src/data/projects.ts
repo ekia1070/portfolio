@@ -97,7 +97,7 @@ export const projects = [
   },
   {
     title: "CEXSTOCK 거래소 외 2개 거래소 구축",
-    period: "",
+    period: "2018.06 ~ 2019.01",
     company: "스마트블록체인",
     type: "React / FE",
     techStack: ["React.js", "MySQL", "PHP", "Apache", "HTML5", "jQuery"],
@@ -113,7 +113,7 @@ export const projects = [
   },
   {
     title: "Smart Wallet 외 6개 코인지갑 사이트 구축",
-    period: "",
+    period: "2018.06 ~ 2019.01",
     company: "스마트블록체인",
     type: "React / FE",
     techStack: ["React.js", "MySQL", "PHP", "Apache", "HTML5", "jQuery"],
@@ -130,8 +130,8 @@ export const projects = [
   },
   {
     title: "코인 Explorer 사이트 구축",
-    period: "",
     company: "스마트블록체인",
+    period: "2018.06 ~ 2019.01",
     type: "React / FE",
     techStack: ["React.js", "MySQL", "PHP", "Apache", "HTML5", "jQuery"],
     environment: ["Windows"],

@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/80 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--background)]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6">
             <a href="#" className="text-base font-black text-[var(--foreground)] sm:text-xl">
             SeKwang<span className="text-[var(--accent)]">.dev</span>
