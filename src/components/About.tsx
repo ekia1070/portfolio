@@ -22,19 +22,20 @@ const About = () => {
       id="about"
       className="mx-auto max-w-6xl px-5 py-20 sm:px-6"
     >
-      <h2 className="mb-8 text-3xl font-black text-[var(--foreground)]">
+      <h2 className="mb-8 flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
+        <span className="h-px w-8 bg-[var(--accent)]" />
         About
       </h2>
 
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-lg border border-[var(--line)] bg-[var(--foreground)] p-6 text-white shadow-[var(--shadow-soft)] sm:p-8">
-          <p className="text-sm font-bold text-teal-200">
+        <div className="rounded-lg border border-[var(--accent-border)] bg-[var(--surface-muted)] p-6 shadow-[var(--shadow-soft)] sm:p-8">
+          <p className="text-sm font-bold text-[var(--accent)]">
             Backend foundation, frontend growth
           </p>
-          <p className="mt-5 text-2xl font-black leading-snug sm:text-3xl">
+          <p className="mt-5 text-2xl font-black leading-snug text-[var(--foreground)] sm:text-3xl">
             업무를 이해하고, 사용자가 쓰기 편한 웹 서비스를 만듭니다.
           </p>
-          <p className="mt-5 leading-8 text-white/75">
+          <p className="mt-5 leading-8 text-[var(--muted)]">
             Java/Spring 기반 백엔드 경험을 바탕으로 다양한 기업 프로젝트를
             수행해왔고, 최근에는 React, Next.js, TypeScript 중심의
             프론트엔드 개발에 집중하고 있습니다.
@@ -45,7 +46,7 @@ const About = () => {
           {strengths.map((strength) => (
             <article
               key={strength.title}
-              className="rounded-lg border border-[var(--line)] bg-white/80 p-6 shadow-[var(--shadow-soft)]"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)]"
             >
               <h3 className="text-lg font-black text-[var(--foreground)]">
                 {strength.title}
