@@ -59,7 +59,7 @@ const Footer = () => (
       </div>
 
       <p className="mt-8 text-center text-xs text-[var(--muted)]">
-        © 2025 SeKwang.dev
+        © 2026 SeKwang.dev
       </p>
 
     </div>
