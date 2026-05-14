@@ -5,19 +5,23 @@ import Career from "@/components/Career";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contacts";
 import About from "@/components/About";
+import Footer from "@/components/Footer";
 import ScrollTopButton from "@/components/ScrollTopButton";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Career />
-      <Skills />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Career />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
       <ScrollTopButton />
-    </main>
+    </>
   );
 }
