@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SeKwang Portfolio",
-  description: "React, Next.js, TypeScript, Java 기반 개발자 포트폴리오",
+  description: "React, Next.js, TypeScript, Java 기반 개발 포트폴리오",
 };
 
 export default function RootLayout({
