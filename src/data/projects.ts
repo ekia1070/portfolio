@@ -203,7 +203,7 @@ export const projects = [
     period: "2019.12 ~ 2020.02",
     customer: "CJ 대한통운",
     type: "Java / BE",
-    techStack: ["Apache", "Tomact", "Linux", "Java", "Spring"],
+    techStack: ["Apache", "Tomcat", "Linux", "Java", "Spring"],
     environment: ["Windows"],
     hasDetail: "N",
     role: [
