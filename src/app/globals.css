@@ -113,7 +113,7 @@ a {
 }
 
 .filter-reveal {
-  animation: fadeInUp 0.45s ease forwards;
+  animation: fadeInUp 0.45s ease both;
 }
 
 .delay-1 { transition-delay: 100ms; }
