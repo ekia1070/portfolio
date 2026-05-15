@@ -12,6 +12,15 @@ const contactSchema = z.object({
   turnstileToken: z.string().min(1),
 })
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 async function verifyTurnstile(token: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY
   if (!secret) return false
@@ -70,13 +79,17 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ error: '메일 설정이 누락되었습니다.' }, { status: 500 })
   }
 
+  const safeName = escapeHtml(name)
+  const safeEmail = escapeHtml(email)
+  const safeMessage = escapeHtml(message)
+
   try {
     const resend = new Resend(RESEND_API_KEY)
 
     await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>',
       to: CONTACT_EMAIL,
-      subject: `[Portfolio] ${name}님의 메시지`,
+      subject: `[Portfolio] ${safeName}님의 메시지`,
       replyTo: email,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -84,16 +97,16 @@ export const POST = async (req: Request) => {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 0; font-weight: bold; color: #555; width: 80px;">이름</td>
-              <td style="padding: 8px 0;">${name}</td>
+              <td style="padding: 8px 0;">${safeName}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; color: #555;">이메일</td>
-              <td style="padding: 8px 0;"><a href="mailto:${email}">${email}</a></td>
+              <td style="padding: 8px 0;"><a href="mailto:${safeEmail}">${safeEmail}</a></td>
             </tr>
           </table>
           <hr style="border: none; border-top: 1px solid #eee; margin: 16px 0;" />
           <h3 style="color: #555; margin-bottom: 8px;">메시지</h3>
-          <p style="line-height: 1.7; white-space: pre-wrap;">${message}</p>
+          <p style="line-height: 1.7; white-space: pre-wrap;">${safeMessage}</p>
         </div>
       `,
     })
