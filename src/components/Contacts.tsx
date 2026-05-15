@@ -69,7 +69,13 @@ const Contacts = () => {
     'w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition focus:border-[var(--accent-strong)] focus:ring-1 focus:ring-[var(--accent-strong)]'
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-5 py-20 sm:px-6">
+    <section id="contact" className="relative overflow-hidden bg-[var(--surface)]">
+      {/* Section glow — indigo, top-left */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 -top-32 h-[400px] w-[400px] rounded-full bg-[var(--accent-strong)] opacity-[0.06] blur-[100px]"
+      />
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-6">
       <h2 className="mb-8 flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
         <span className="h-px w-8 bg-[var(--accent)]" />
         Contact
@@ -196,6 +202,7 @@ const Contacts = () => {
             </div>
           </form>
         )}
+      </div>
       </div>
     </section>
   )

@@ -2,25 +2,23 @@ import { skills } from "@/data/skills";
 
 const Skills = () => {
   return (
-    <section
-      id="skills"
-      className="mx-auto max-w-6xl px-5 py-20 sm:px-6"
-    >
-      <h2 className="mb-10 flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
-        <span className="h-px w-8 bg-[var(--accent)]" />
-        Skills
-      </h2>
+    <section id="skills" className="relative overflow-hidden">
+      {/* Section glow — purple, bottom-right */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -right-32 h-[450px] w-[450px] rounded-full bg-[var(--accent-strong)] opacity-[0.07] blur-[100px]"
+      />
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <SkillCard
-          title="Main"
-          items={skills.main}
-        />
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-6">
+        <h2 className="mb-10 flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
+          <span className="h-px w-8 bg-[var(--accent)]" />
+          Skills
+        </h2>
 
-        <SkillCard
-          title="Experienced"
-          items={skills.experienced}
-        />
+        <div className="grid gap-6 md:grid-cols-2">
+          <SkillCard title="Main" items={skills.main} />
+          <SkillCard title="Experienced" items={skills.experienced} />
+        </div>
       </div>
     </section>
   );

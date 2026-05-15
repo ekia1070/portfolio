@@ -357,10 +357,14 @@ const Projects = () => {
     : undefined;
 
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-6xl px-5 py-20 sm:px-6"
-    >
+    <section id="projects" className="relative overflow-hidden">
+      {/* Section glow — cool blue, top-center */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 -top-40 h-[300px] w-[700px] -translate-x-1/2 bg-[var(--accent)] opacity-[0.04] blur-[80px]"
+      />
+
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-6">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="flex items-center gap-3 text-3xl font-black text-[var(--foreground)]">
           <span className="h-px w-8 bg-[var(--accent)]" />
@@ -417,6 +421,7 @@ const Projects = () => {
           onClose={() => setSelectedProject(null)}
         />
       )}
+      </div>
     </section>
   );
 }
