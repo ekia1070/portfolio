@@ -404,7 +404,7 @@ const Projects = () => {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div key={selectedFilter} className="filter-reveal grid gap-6 lg:grid-cols-2">
         {filteredProjects.map((project) => (
           <ProjectCard
             key={`${project.title}-${project.period}`}

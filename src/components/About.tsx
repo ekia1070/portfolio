@@ -1,4 +1,9 @@
+'use client';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+
 const About = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   const strengths = [
     {
       title: "Full Process Experience",
@@ -31,8 +36,8 @@ const About = () => {
           About
         </h2>
 
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-lg border border-[var(--accent-border)] bg-[var(--surface-muted)] p-6 shadow-[var(--shadow-soft)] sm:p-8">
+        <div ref={ref} className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className={`reveal${isVisible ? ' visible' : ''} rounded-lg border border-[var(--accent-border)] bg-[var(--surface-muted)] p-6 shadow-[var(--shadow-soft)] sm:p-8`}>
             <p className="text-sm font-bold text-[var(--accent)]">
               Backend foundation, frontend growth
             </p>
@@ -47,10 +52,10 @@ const About = () => {
           </div>
 
           <div className="grid gap-4">
-            {strengths.map((strength) => (
+            {strengths.map((strength, i) => (
               <article
                 key={strength.title}
-                className="rounded-lg border border-[var(--line)] bg-[var(--surface-muted)] p-6 shadow-[var(--shadow-soft)]"
+                className={`reveal delay-${i + 1}${isVisible ? ' visible' : ''} rounded-lg border border-[var(--line)] bg-[var(--surface-muted)] p-6 shadow-[var(--shadow-soft)]`}
               >
                 <h3 className="text-lg font-black text-[var(--foreground)]">
                   {strength.title}

@@ -1,6 +1,10 @@
+'use client';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { skills } from "@/data/skills";
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="skills" className="relative overflow-hidden">
       {/* Section glow — purple, bottom-right */}
@@ -15,9 +19,13 @@ const Skills = () => {
           Skills
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <SkillCard title="Main" items={skills.main} />
-          <SkillCard title="Experienced" items={skills.experienced} />
+        <div ref={ref} className="grid gap-6 md:grid-cols-2">
+          <div className={`reveal${isVisible ? ' visible' : ''}`}>
+            <SkillCard title="Main" items={skills.main} isVisible={isVisible} baseDelay={0} />
+          </div>
+          <div className={`reveal delay-2${isVisible ? ' visible' : ''}`}>
+            <SkillCard title="Experienced" items={skills.experienced} isVisible={isVisible} baseDelay={2} />
+          </div>
         </div>
       </div>
     </section>
@@ -27,9 +35,13 @@ const Skills = () => {
 const SkillCard = ({
   title,
   items,
+  isVisible,
+  baseDelay,
 }: {
   title: string;
   items: string[];
+  isVisible: boolean;
+  baseDelay: number;
 }) => {
   return (
     <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)]">
@@ -38,10 +50,11 @@ const SkillCard = ({
       </h3>
 
       <div className="flex flex-wrap gap-2">
-        {items.map((item) => (
+        {items.map((item, i) => (
           <span
             key={item}
-            className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent)]"
+            className={`reveal${isVisible ? ' visible' : ''} rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-sm font-semibold text-[var(--accent)]`}
+            style={{ transitionDelay: isVisible ? `${(baseDelay * 200) + (i * 60)}ms` : '0ms' }}
           >
             {item}
           </span>

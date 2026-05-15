@@ -1,6 +1,10 @@
+'use client';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { careers } from "@/data/career";
 
 const Career = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="career" className="relative overflow-hidden bg-[var(--surface)]">
       {/* Section glow — amber, bottom-left */}
@@ -15,7 +19,7 @@ const Career = () => {
           Career
         </h2>
 
-        <div className="space-y-6">
+        <div ref={ref} className={`reveal${isVisible ? ' visible' : ''} space-y-6`}>
           {careers.map((career) => (
             <article
               key={career.company}
