@@ -128,15 +128,6 @@ const Contacts = () => {
             )}
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-xs text-[var(--muted)]">
-                또는 직접 이메일:{' '}
-                <a
-                  href="mailto:ekia1070@gmail.com"
-                  className="font-semibold text-[var(--foreground)] transition hover:text-[var(--accent)]"
-                >
-                  ekia1070@gmail.com
-                </a>
-              </p>
               <button
                 type="submit"
                 disabled={status === 'loading'}
