@@ -173,7 +173,7 @@ const Contacts = () => {
                   setErrorMsg('보안 인증 위젯 로딩에 실패했습니다.')
                   setStatus('error')
                 }}
-                options={{ theme: 'dark', size: 'normal' }}
+                options={{ theme: 'dark', size: 'flexible' }}
               />
             )}
 
