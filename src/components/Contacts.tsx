@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
+
+const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
 
 const Contacts = () => {
   const [name, setName] = useState('')
@@ -10,9 +13,18 @@ const Contacts = () => {
   const [message, setMessage] = useState('')
   const [status, setStatus] = useState<FormState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const turnstileRef = useRef<TurnstileInstance>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!turnstileToken) {
+      setErrorMsg('보안 인증을 완료해주세요.')
+      setStatus('error')
+      return
+    }
+
     setStatus('loading')
     setErrorMsg('')
 
@@ -20,15 +32,23 @@ const Contacts = () => {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          website: '',        // honeypot — always empty for real users
+          turnstileToken,
+        }),
       })
 
       const data = await res.json()
 
       if (!res.ok) {
-        console.log(res)
         setErrorMsg(data.error ?? '오류가 발생했습니다.')
         setStatus('error')
+        // Reset Turnstile so user can retry
+        turnstileRef.current?.reset()
+        setTurnstileToken(null)
         return
       }
 
@@ -37,9 +57,11 @@ const Contacts = () => {
       setEmail('')
       setMessage('')
     } catch (e) {
-      console.log(e)
+      console.error(e)
       setErrorMsg('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.')
       setStatus('error')
+      turnstileRef.current?.reset()
+      setTurnstileToken(null)
     }
   }
 
@@ -77,6 +99,16 @@ const Contacts = () => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="grid gap-4">
+            {/* Honeypot — hidden from users, bots fill this in */}
+            <input
+              type="text"
+              name="website"
+              aria-hidden="true"
+              tabIndex={-1}
+              autoComplete="off"
+              className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+            />
+
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="grid gap-1.5">
                 <label htmlFor="contact-name" className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
@@ -123,6 +155,22 @@ const Contacts = () => {
               />
             </div>
 
+            {/* Turnstile widget */}
+            {SITE_KEY && (
+              <Turnstile
+                ref={turnstileRef}
+                siteKey={SITE_KEY}
+                onSuccess={(token) => setTurnstileToken(token)}
+                onExpire={() => setTurnstileToken(null)}
+                onError={() => {
+                  setTurnstileToken(null)
+                  setErrorMsg('보안 인증 위젯 로딩에 실패했습니다.')
+                  setStatus('error')
+                }}
+                options={{ theme: 'dark', size: 'normal' }}
+              />
+            )}
+
             {status === 'error' && (
               <p className="text-sm text-red-400">{errorMsg}</p>
             )}
@@ -133,7 +181,7 @@ const Contacts = () => {
               </p>
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={status === 'loading' || (!!SITE_KEY && !turnstileToken)}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--accent-strong)] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[var(--accent-strong)]/20 transition hover:bg-[var(--accent)] disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto sm:shrink-0"
               >
                 {status === 'loading' ? (
