@@ -125,20 +125,11 @@ const Contacts = () => {
               <p className="text-sm text-red-400">{errorMsg}</p>
             )}
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-xs text-[var(--muted)]">
-                또는 직접 이메일:{' '}
-                <a
-                  href="mailto:ekia1070@gmail.com"
-                  className="font-semibold text-[var(--foreground)] transition hover:text-[var(--accent)]"
-                >
-                  ekia1070@gmail.com
-                </a>
-              </p>
+            <div className="flex justify-end">
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--accent-strong)] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[var(--accent-strong)]/20 transition hover:bg-[var(--accent)] disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto sm:shrink-0"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--accent-strong)] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[var(--accent-strong)]/20 transition hover:bg-[var(--accent)] disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto"
               >
                 {status === 'loading' ? (
                   <>
