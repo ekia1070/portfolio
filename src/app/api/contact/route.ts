@@ -54,7 +54,8 @@ export const POST = async (req: Request) => {
     })
 
     return NextResponse.json({ success: true })
-  } catch {
+  } catch (e) {
+    console.log(e)
     return NextResponse.json({ error: '이메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.' }, { status: 500 })
   }
 }

@@ -26,6 +26,7 @@ const Contacts = () => {
       const data = await res.json()
 
       if (!res.ok) {
+        console.log(res)
         setErrorMsg(data.error ?? '오류가 발생했습니다.')
         setStatus('error')
         return
@@ -35,7 +36,8 @@ const Contacts = () => {
       setName('')
       setEmail('')
       setMessage('')
-    } catch {
+    } catch (e) {
+      console.log(e)
       setErrorMsg('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.')
       setStatus('error')
     }
