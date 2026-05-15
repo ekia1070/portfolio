@@ -163,18 +163,20 @@ const Contacts = () => {
 
             {/* Turnstile widget */}
             {SITE_KEY && (
-              <Turnstile
-                ref={turnstileRef}
-                siteKey={SITE_KEY}
-                onSuccess={(token) => setTurnstileToken(token)}
-                onExpire={() => setTurnstileToken(null)}
-                onError={() => {
-                  setTurnstileToken(null)
-                  setErrorMsg('보안 인증 위젯 로딩에 실패했습니다.')
-                  setStatus('error')
-                }}
-                options={{ theme: 'dark', size: 'flexible' }}
-              />
+              <div className="w-full overflow-hidden rounded-md">
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={SITE_KEY}
+                  onSuccess={(token) => setTurnstileToken(token)}
+                  onExpire={() => setTurnstileToken(null)}
+                  onError={() => {
+                    setTurnstileToken(null)
+                    setErrorMsg('보안 인증 위젯 로딩에 실패했습니다.')
+                    setStatus('error')
+                  }}
+                  options={{ theme: 'dark', size: 'flexible' }}
+                />
+              </div>
             )}
 
             {status === 'error' && (
