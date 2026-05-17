@@ -12,7 +12,7 @@ const contactSchema = z.object({
   turnstileToken: z.string().min(1),
 })
 
-function escapeHtml(str: string): string {
+const escapeHtml = (str: string): string => {
   return str
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -21,7 +21,7 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;')
 }
 
-async function verifyTurnstile(token: string): Promise<boolean> {
+const verifyTurnstile = async (token: string): Promise<boolean> => {
   const secret = process.env.TURNSTILE_SECRET_KEY
   if (!secret) return false
 

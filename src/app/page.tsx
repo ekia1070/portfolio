@@ -8,7 +8,7 @@ import About from "@/components/About";
 import Footer from "@/components/Footer";
 import ScrollTopButton from "@/components/ScrollTopButton";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Header />
@@ -24,4 +24,6 @@ export default function Home() {
       <ScrollTopButton />
     </>
   );
-}
+};
+
+export default Home;
