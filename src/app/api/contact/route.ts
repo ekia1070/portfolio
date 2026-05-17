@@ -3,7 +3,7 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-function escapeHtml(str: string): string {
+const escapeHtml = (str: string): string => {
   return str
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -12,7 +12,7 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;')
 }
 
-export async function POST(request: Request) {
+export const POST = async (request: Request) => {
   const body = await request.json()
   const { name, email, message } = body as { name: string; email: string; message: string }
 

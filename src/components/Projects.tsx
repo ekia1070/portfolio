@@ -230,7 +230,7 @@ const ProjectCard = ({
 
   return (
     <article
-      className={`rounded-lg border bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)] transition duration-200 hover:-translate-y-1 hover:border-[var(--accent-border)] ${
+      className={`flex flex-col rounded-lg border bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)] transition duration-200 hover:-translate-y-1 hover:border-[var(--accent-border)] ${
         hasDetail ? "border-[var(--accent-border)]" : "border-[var(--line)]"
       }`}
     >
@@ -311,27 +311,38 @@ const ProjectCard = ({
       )}
 
       {environment.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {environment.map((item) => (
-            <span
-              key={item}
-              className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--muted)]"
-            >
-              {item}
-            </span>
-          ))}
+        <div className="mt-4">
+          <p className="mb-2 text-xs font-black text-[var(--foreground)]">
+            Environment
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {environment.map((item) => (
+              <span
+                key={item}
+                className="rounded-md border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--muted)]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
-      {hasDetail && (
+      <div className="mt-auto">
         <button
           type="button"
-          onClick={() => onOpenDetail(project)}
-          className="mt-5 w-full cursor-pointer rounded-md border border-[var(--accent-border)] bg-[var(--surface-muted)] px-4 py-2 text-sm font-bold text-[var(--accent)] transition hover:bg-[var(--accent-strong)] hover:text-white"
+          onClick={hasDetail ? () => onOpenDetail(project) : undefined}
+          aria-hidden={!hasDetail}
+          tabIndex={hasDetail ? undefined : -1}
+          className={`mt-5 w-full rounded-md border px-4 py-2 text-sm font-bold transition ${
+            hasDetail
+              ? "cursor-pointer border-[var(--accent-border)] bg-[var(--surface-muted)] text-[var(--accent)] hover:bg-[var(--accent-strong)] hover:text-white"
+              : "invisible border-transparent"
+          }`}
         >
           상세 보기
         </button>
-      )}
+      </div>
     </article>
   );
 };

@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   description: "React, Next.js, TypeScript, Java 기반 개발 포트폴리오",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html
       lang="ko"
@@ -30,4 +30,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;
