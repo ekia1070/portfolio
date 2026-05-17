@@ -9,7 +9,7 @@ const store = new Map<string, RateLimitEntry>()
 const WINDOW_MS = 10 * 60 * 1000 // 10 minutes
 const MAX_REQUESTS = 3
 
-export function checkRateLimit(ip: string): { allowed: boolean; retryAfterSec: number } {
+export const checkRateLimit = (ip: string): { allowed: boolean; retryAfterSec: number } => {
   const now = Date.now()
   const entry = store.get(ip)
 
