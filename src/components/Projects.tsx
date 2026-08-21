@@ -142,6 +142,14 @@ const ProjectDetailModal = ({
               </span>
             </DetailSection>
 
+            {detail.description && (
+              <DetailSection title="프로젝트 설명">
+                <p className="rounded-lg border border-[var(--line)] bg-[var(--surface-muted)] p-4 text-sm leading-7 text-[var(--muted)]">
+                  {detail.description}
+                </p>
+              </DetailSection>
+            )}
+
             <DetailSection title="담당 기능">
               <DetailList items={detail.responsibilities} />
             </DetailSection>
